@@ -1,9 +1,7 @@
-import { db } from '$lib/server/db';
-import { userTable } from '$lib/server/schema';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from "./$types";
+import { redirect } from "@sveltejs/kit";
 
-export const load: PageServerLoad = async () => {
-	return {
-		page_server_data: await db.select().from(userTable)
-	};
+export const load: PageServerLoad = async ({ cookies }) => {
+	const user_id = cookies.get("gdsc_user_id");
+	if (user_id == undefined) redirect(302, "/signup");
 };
