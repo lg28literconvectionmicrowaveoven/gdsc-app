@@ -2,15 +2,18 @@ import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
 import { db } from "$lib/server/db";
 import { commentsTable, userTable } from "$lib/server/schema";
-import { asc } from "drizzle-orm";
+import { asc, eq } from "drizzle-orm";
 
 export const load: PageServerLoad = async ({ cookies }) => {
 	const userId = cookies.get("user_id");
 	if (userId == undefined) redirect(302, "/signup");
-	const users = await db.select().from(userTable);
+	const username = await db
+		.select()
+		.from(userTable)
+		.where(eq(userTable.id, parseInt(userId)));
 	const comments = await db.select().from(commentsTable).orderBy(asc(commentsTable.comment_id));
 	return {
-		users: users,
+		username: username[0].username,
 		comments: comments
 	};
 };
