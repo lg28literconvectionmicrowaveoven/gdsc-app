@@ -1,3 +1,5 @@
+// TODO: create reply system
+// TODO: comments explaining code, README
 import { dbPath, sqliteDB } from "$lib/server/db";
 import fs from "fs";
 import path from "path";
