@@ -5,7 +5,7 @@
 
 <form method="POST" action="?/post_comment">
 	<label>
-		User ID {data.current_user_id}
+		User ID {JSON.stringify(data.current_user_id, null, 2)}
 	</label>
 	<label>
 		Comment

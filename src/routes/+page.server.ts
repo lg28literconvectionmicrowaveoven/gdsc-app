@@ -5,12 +5,12 @@ import { commentsTable, userTable } from "$lib/server/schema";
 import { asc } from "drizzle-orm";
 
 export const load: PageServerLoad = async ({ cookies }) => {
-	const user_id = cookies.get("user_id");
+	const user_id = await cookies.get("user_id");
 	if (user_id == undefined) redirect(302, "/signup");
 	const users = await db.select().from(userTable);
-	let comments = await db.select().from(commentsTable).orderBy(asc(commentsTable.comment_id));
+	const comments = await db.select().from(commentsTable).orderBy(asc(commentsTable.comment_id));
 	return {
-		current_user_id: user_id,
+		current_user_id: parseInt(user_id),
 		users: users,
 		comments: comments
 	};
