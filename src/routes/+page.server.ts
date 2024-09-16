@@ -27,7 +27,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
 		.innerJoin(userTable, eq(commentsTable.user_id, userTable.id))
 		.orderBy(asc(commentsTable.comment_id));
 	return {
-		username: username[0].username,
+		current_username: username[0].username,
 		comments: comments
 	};
 };

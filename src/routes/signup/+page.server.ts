@@ -2,6 +2,11 @@
 import { db } from "$lib/server/db";
 import { userTable } from "$lib/server/schema";
 import { redirect } from "@sveltejs/kit";
+import type { PageServerLoad } from "../$types";
+export const load: PageServerLoad = async ({ cookies }) => {
+	const userId = cookies.get("user_id");
+	if (userId != undefined) redirect(302, "/");
+};
 export const actions = {
 	register_user: async ({ cookies, request }) => {
 		const formData = await request.formData();

@@ -7,18 +7,18 @@
 	<title>Comments</title>
 </svelte:head>
 
-<h2>Post Comment as {data.username}</h2>
-<form method="POST" action="?/post_comment">
-	<label>
-		<div class="text-holder">
+<div class="main-container">
+	<h1>Post Comment as {data.current_username}</h1>
+	<form method="POST" action="?/post_comment">
+		<div style:padding-bottom="2.5%">
 			<textarea name="Comment" type="text" placeholder="Type your comment" />
 		</div>
 		<button type="submit">Comment</button>
-	</label>
-</form>
+	</form>
+</div>
 <br />
-<h2>Comments</h2>
-<div>
+<div class="main-container">
+	<h1>Comments</h1>
 	{#each data.comments as comment}
 		<div class="comment-container">
 			<div class="comment-header">
@@ -44,32 +44,36 @@
 		font-optical-sizing: auto;
 		font-style: normal;
 		border-radius: 8px;
-		border: solid;
 		font-family: "JetBrains Mono", monospace;
 		font-optical-sizing: auto;
 		font-style: normal;
+		background-color: #f9f9f9;
+		border: 3px solid #ddd;
+		padding: 7px;
 	}
 	button {
 		font-family: "Inter", sans-serif;
 		font-optical-sizing: auto;
 		font-style: normal;
 		padding: 10px;
-		border-radius: 10px;
-		border: solid;
-		font-weight: bold;
+		border-radius: 8px;
 		font-size: 90%;
-	}
-	.text-holder {
-		padding-bottom: 1%;
+		background-color: #f0f0f0;
+		border: 2px solid #ddd;
 	}
 	.comment-container {
 		border: 1px solid #ddd;
 		border-radius: 8px;
-		padding: 12px;
+		padding: 15px;
 		margin-bottom: 10px;
-		background-color: #f9f9f9;
+		background-color: #f0f0f0;
 	}
-
+	.main-container {
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 15px;
+		background-color: #f7f7f7;
+	}
 	.comment-header {
 		font-size: 14px;
 		color: #555;
