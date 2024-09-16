@@ -7,6 +7,8 @@ This is the website built using SvelteKit/Node.JS alongside a SQLite/Drizzle bac
 
 * Password-based authentication system
 * Replies
+* Profile Pictures
+* Comment Deletion
 
 ## Developing
 

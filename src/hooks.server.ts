@@ -1,5 +1,8 @@
 // TODO: create reply system
 // TODO: comments explaining code, README
+// TODO: hosting
+// TODO: profile pictures
+// TODO: comment deletion
 import { dbPath, sqliteDB } from "$lib/server/db";
 import fs from "fs";
 import path from "path";
