@@ -15,6 +15,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
 		comments: comments
 	};
 };
+
 export const actions = {
 	post_comment: async ({ cookies, request }) => {
 		const post_time = new Date();
