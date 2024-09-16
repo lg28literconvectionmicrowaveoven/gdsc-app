@@ -12,5 +12,5 @@ export const commentsTable = sqliteTable("comments", {
 	hour: integer("hour").notNull(),
 	minute: integer("minute").notNull(),
 	second: integer("second").notNull(),
-	comment: text("comment")
+	comment: text("comment").notNull()
 });

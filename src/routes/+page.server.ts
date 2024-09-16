@@ -11,7 +11,21 @@ export const load: PageServerLoad = async ({ cookies }) => {
 		.select()
 		.from(userTable)
 		.where(eq(userTable.id, parseInt(userId)));
-	const comments = await db.select().from(commentsTable).orderBy(asc(commentsTable.comment_id));
+	const comments = await db
+		.select({
+			comment_id: commentsTable.comment_id,
+			username: userTable.username,
+			day: commentsTable.day,
+			month: commentsTable.month,
+			year: commentsTable.year,
+			hour: commentsTable.hour,
+			minute: commentsTable.minute,
+			second: commentsTable.second,
+			comment: commentsTable.comment
+		})
+		.from(commentsTable)
+		.innerJoin(userTable, eq(commentsTable.user_id, userTable.id))
+		.orderBy(asc(commentsTable.comment_id));
 	return {
 		username: username[0].username,
 		comments: comments
