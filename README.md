@@ -1,5 +1,5 @@
 
-# Sabarigirish Manikandan's application to the GDSC Dev Team.
+# Sabarigirish Manikandan's application to the GDSC Dev Team. (deployment pending)
 
 This is the website built using SvelteKit/Node.JS alongside a SQLite/Drizzle backend.
 
