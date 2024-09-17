@@ -1,7 +1,7 @@
 <div class="main-container">
 	<form method="POST" action="?/register_user">
 		<h1>Create a new account</h1>
-		<div style:padding-bottom="2.5%">
+		<div style:padding-bottom="1%">
 			<input placeholder="Type in your new username" name="Username" type="text" />
 		</div>
 		<button type="submit">Sign up</button>

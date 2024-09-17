@@ -10,7 +10,7 @@
 <div class="main-container">
 	<h1>Post Comment as {data.current_username}</h1>
 	<form method="POST" action="?/post_comment">
-		<div style:padding-bottom="2.5%">
+		<div style:padding-bottom="1%">
 			<textarea name="Comment" type="text" placeholder="Type your comment" />
 		</div>
 		<button type="submit">Comment</button>

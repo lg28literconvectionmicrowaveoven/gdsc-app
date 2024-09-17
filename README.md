@@ -10,7 +10,7 @@ This is the website built using SvelteKit/Node.JS alongside a SQLite/Drizzle bac
 * Profile Pictures
 * Comment Deletion
 
-## Developing
+## Testing
 
 Once you've installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -23,7 +23,7 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of:
+To create a production version:
 
 ```bash
 npm run build
@@ -32,3 +32,8 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+# How it works
+
+It authenticates users using a specialized cookie containing a user ID tied to a username. Posting comments puts them in a SQLite database containing comments along with source user IDs.
+Signing up on first visit creates this cookie for you.

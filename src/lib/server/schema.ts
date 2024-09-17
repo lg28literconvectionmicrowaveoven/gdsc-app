@@ -1,4 +1,5 @@
 import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
+// Define table schemas for the Database
 export const userTable = sqliteTable("users", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
 	username: text("username")

@@ -1,15 +1,13 @@
 // TODO: create reply system
-// TODO: comments explaining code, README
 // TODO: hosting
 // TODO: profile pictures
 // TODO: comment deletion
 import { dbPath, sqliteDB } from "$lib/server/db";
 import fs from "fs";
-import path from "path";
 
-const absoluteDBPath = path.resolve(dbPath);
+// Create SQLite DB file and tables if they do not exist already
 export const handle = async ({ event, resolve }) => {
-	if (!fs.existsSync(absoluteDBPath)) fs.writeFileSync(absoluteDBPath, "");
+	if (!fs.existsSync(dbPath)) fs.writeFileSync(dbPath, "");
 	sqliteDB
 		.prepare(
 			"CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT)"
