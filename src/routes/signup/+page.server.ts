@@ -1,5 +1,5 @@
 // TODO: implement a password based login system so users can come back to their users
-// TODO: check for null username
+// TODO: check for null username, username that already exists
 import { db } from "$lib/server/db";
 import { userTable } from "$lib/server/schema";
 import { redirect } from "@sveltejs/kit";
@@ -17,7 +17,7 @@ export const actions = {
 		const formData = await request.formData();
 		const userId = await db
 			.insert(userTable)
-			.values({ username: formData.get("Username") })
+			.values({ username: formData.get("Username").trim() })
 			.returning({ insertedId: userTable.id });
 		cookies.set("user_id", userId[0].insertedId, { path: "/", httpOnly: true, secure: true });
 		redirect(302, "/");

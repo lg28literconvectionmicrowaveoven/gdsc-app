@@ -1,6 +1,16 @@
 <script lang="ts">
 	import type { PageData } from "./$types";
 	export let data: PageData;
+	let comment = "";
+	let errorMessage = "";
+	function validateForm(event) {
+		if (!comment.trim()) {
+			event.preventDefault();
+			errorMessage = "Comment cannot be empty.";
+		} else {
+			errorMessage = "";
+		}
+	}
 </script>
 
 <svelte:head>
@@ -9,9 +19,12 @@
 
 <div class="main-container">
 	<h1>Post Comment as {data.current_username}</h1>
-	<form method="POST" action="?/post_comment">
+	<form method="POST" action="?/post_comment" on:submit={validateForm}>
 		<div style:padding-bottom="1%">
-			<textarea name="Comment" type="text" placeholder="Type your comment" />
+			<textarea name="Comment" type="text" placeholder="Type your comment" bind:value={comment} />
+			{#if errorMessage}
+				<h3 style:color="red">{errorMessage}</h3>
+			{/if}
 		</div>
 		<button type="submit">Comment</button>
 	</form>

@@ -1,4 +1,3 @@
-// TODO: check for null comment
 import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
 import { db } from "$lib/server/db";
@@ -52,7 +51,7 @@ export const actions = {
 			hour: postTime.getHours(),
 			minute: postTime.getMinutes(),
 			second: postTime.getSeconds(),
-			comment: formData.get("Comment")
+			comment: formData.get("Comment").trim()
 		});
 		redirect(302, "/");
 	}

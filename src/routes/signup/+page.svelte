@@ -1,12 +1,38 @@
+<script lang="ts">
+	let username = "";
+	let errorMessage = "";
+	function validateForm(event) {
+		if (!username.trim()) {
+			event.preventDefault();
+			errorMessage = "Please enter a valid username.";
+		} else {
+			errorMessage = "";
+		}
+		console.log(errorMessage);
+	}
+</script>
+
 <div class="main-container">
-	<form method="POST" action="?/register_user">
+	<form method="POST" on:submit={validateForm} action="?/register_user">
 		<h1>Create a new account</h1>
 		<div style:padding-bottom="1%">
-			<input placeholder="Type in your new username" name="Username" type="text" />
+			<input
+				placeholder="Type in your new username"
+				name="Username"
+				type="text"
+				bind:value={username}
+			/>
+			{#if errorMessage}
+				<h3 style:color="red">{errorMessage}</h3>
+			{/if}
 		</div>
 		<button type="submit">Sign up</button>
 	</form>
 </div>
+
+<svelte:head>
+	<title>Sign up</title>
+</svelte:head>
 
 <style>
 	input {
